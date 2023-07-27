@@ -5,11 +5,6 @@
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.2.1/userguide/building_java_projects.html in the Gradle documentation.
  */
 
-plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    application
-}
-
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -40,4 +35,12 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+plugins {
+    application
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }

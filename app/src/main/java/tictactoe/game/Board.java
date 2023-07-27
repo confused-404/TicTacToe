@@ -24,15 +24,27 @@ public class Board {
 
     private Integer getBoardSize() {
         System.out.println("Enter the size of the board: ");
-        String strSize = Input.scanner.nextLine();
+        String strSize = Input.getLine();
 
         try {
             Integer size = Integer.parseInt(strSize);
+            if (size < 3 || size > 10) {
+                System.out.println("Invalid input. Please enter a number between 3 and 10.");
+                return this.getBoardSize();
+            }
             return size;
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter a number.");
             return this.getBoardSize();
         }
+    }
+
+    public Integer getSize() {
+        return this.size;
+    }
+
+    public Cell[][] getCells() {
+        return this.cells;
     }
 
 }

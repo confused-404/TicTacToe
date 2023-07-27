@@ -4,13 +4,31 @@
 package tictactoe;
 
 import org.junit.jupiter.api.Test;
+
+import tictactoe.game.Cell;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    /* 
-    @Test void appHasAGreeting() {
+
+    @Test void boardHasASize() {
         App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+        Integer boardSize = classUnderTest.getGame().getBoard().getSize();
+        assertTrue(boardSize >= 3 && boardSize <= 10, "board should have a size between 3 and 10");
     }
-    */
+
+    @Test void boardContainsCells() {
+        App classUnderTest = new App();
+        Cell[][] cells = classUnderTest.getGame().getBoard().getCells();
+        for (Cell[] row : cells) {
+            for (Cell cell : row) {
+                assertNotNull(cell, "board should contain cells");
+            }
+        }
+    }
+
+    @Test void getGameWorks() {
+        App classUnderTest = new App();
+        assertNotNull(classUnderTest.getGame(), "getGame should return a Game object");
+    }
 }

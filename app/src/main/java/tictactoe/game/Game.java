@@ -12,4 +12,8 @@ public class Game {
         this.board = new Board();
     }
 
+    public Board getBoard() {
+        return this.board;
+    }
+
 }
