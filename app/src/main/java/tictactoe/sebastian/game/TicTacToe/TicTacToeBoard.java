@@ -1,6 +1,11 @@
 package tictactoe.sebastian.game.TicTacToe;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import tictactoe.sebastian.game.Board;
+import tictactoe.sebastian.game.Cell;
 import tictactoe.sebastian.game.CellValue;
 
 public class TicTacToeBoard implements Board {
@@ -40,5 +45,19 @@ public class TicTacToeBoard implements Board {
         }
 
         return hasFreeCells;
+    }
+
+    @Override
+    public List<Cell> getFreeCells() {
+        List<Cell> freeCells = new ArrayList<>();
+
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++){
+            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++){
+                if (cells[x][y].getValue() == CellValue.Empty){
+                    freeCells.add(cells[x][y]);
+            }
+        }
+
+        return freeCells;
     }
 }
