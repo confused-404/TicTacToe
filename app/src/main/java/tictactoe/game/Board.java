@@ -29,6 +29,9 @@ public class Board {
 
             try {
                 Integer size = Integer.parseInt(strSize);
+                // TODO use no magic numbers
+                // e.g use minBoardSize = 3
+                // maxBoardSize = 10
                 if (size < 3 || size > 10) {
                     System.out.println("Invalid input. Please enter a number between 3 and 10.");
                     continue;
