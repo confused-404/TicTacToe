@@ -1,23 +1,22 @@
 package tictactoe.sebastian.game.TicTacToe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import tictactoe.sebastian.game.Board;
 import tictactoe.sebastian.game.Cell;
 import tictactoe.sebastian.game.CellValue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicTacToeBoard implements Board {
 
     private final int MAX_FIELDS_IN_ROW = 3;
 
-    private final TicTacToeCell[][] cells = new TicTacToeCell[MAX_FIELDS_IN_ROW][MAX_FIELDS_IN_ROW]; 
+    private final TicTacToeCell[][] cells = new TicTacToeCell[MAX_FIELDS_IN_ROW][MAX_FIELDS_IN_ROW];
 
     @Override
     public void init() {
-        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++){
-            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++){
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
+            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
                 cells[x][y] = new TicTacToeCell(x, y, CellValue.Empty);
             }
         }
@@ -35,10 +34,10 @@ public class TicTacToeBoard implements Board {
     public boolean existsFreeCell() {
         boolean hasFreeCells = false;
 
-        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++){
-            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++){
-                if (cells[x][y].getValue() == CellValue.Empty){
-                    hasFreeCells =  true;
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
+            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
+                if (cells[x][y].getValue() == CellValue.Empty) {
+                    hasFreeCells = true;
                     break;
                 }
             }
@@ -51,10 +50,11 @@ public class TicTacToeBoard implements Board {
     public List<Cell> getFreeCells() {
         List<Cell> freeCells = new ArrayList<>();
 
-        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++){
-            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++){
-                if (cells[x][y].getValue() == CellValue.Empty){
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
+            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
+                if (cells[x][y].getValue() == CellValue.Empty) {
                     freeCells.add(cells[x][y]);
+                }
             }
         }
 
