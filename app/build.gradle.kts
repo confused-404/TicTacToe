@@ -18,6 +18,12 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
+
+    // ===============================================
+    val lombokVersion = "1.18.26"
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    // ===============================================
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
