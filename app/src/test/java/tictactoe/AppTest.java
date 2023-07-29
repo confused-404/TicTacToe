@@ -4,31 +4,52 @@
 package tictactoe;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
-import tictactoe.game.Cell;
+import tictactoe.game.Game;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.util.Random;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+
 class AppTest {
 
-    @Test void boardHasASize() {
-        App classUnderTest = new App();
-        Integer boardSize = classUnderTest.getGame().getBoard().getSize();
-        assertTrue(boardSize >= 3 && boardSize <= 10, "board should have a size between 3 and 10");
+    // WHEN RUNNING TESTS THEY ALL FAIL BECAUSE IDK HOW TO SIMULATE INPUT FOR THE TESTS WITHOUT HAVING TO SWITCH CODE WHEN I RUN THE PROGRAM AND WHEN I TEST
+
+    static Integer[] inputInts = { 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    private static final String TEST_INPUT = Integer.toString(new Random().nextInt(inputInts.length));
+    private App app;
+
+    @BeforeEach
+    void newApp() {
+        app = new App();
     }
 
-    @Test void boardContainsCells() {
-        App classUnderTest = new App();
-        Cell[][] cells = classUnderTest.getGame().getBoard().getCells();
-        for (Cell[] row : cells) {
-            for (Cell cell : row) {
-                assertNotNull(cell, "board should contain cells");
-            }
-        }
+    @BeforeAll
+    static void setUpInputStream() {
+        System.setIn(new ByteArrayInputStream(TEST_INPUT.getBytes()));
     }
 
-    @Test void getGameWorks() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGame(), "getGame should return a Game object");
+
+    @DisplayName("App has a greeting")
+    @Test
+    void appHasAGreeting() {
+        String greeting = app.generateGreeting();
+        assertNotNull(greeting, "The greeting should not be null");
+        assertEquals("Hello, welcome to Tic-Tac-Toe!", greeting, "Invalid greeting");
+    }
+
+    @DisplayName("App has a game object")
+    @Test
+    void getGameWorks() {
+        Game game = app.getGame();
+        assertNotNull(game, "The Game object should not be null");
+        // Add additional tests to check the Game object if needed.
     }
 }

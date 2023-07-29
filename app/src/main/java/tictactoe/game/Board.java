@@ -23,20 +23,23 @@ public class Board {
     }
 
     private Integer getBoardSize() {
-        System.out.println("Enter the size of the board: ");
-        String strSize = Input.getLine();
+        while (true) {
+            System.out.println("Enter the size of the board: ");
+            String strSize = Input.getLine();
 
-        try {
-            Integer size = Integer.parseInt(strSize);
-            if (size < 3 || size > 10) {
-                System.out.println("Invalid input. Please enter a number between 3 and 10.");
-                return this.getBoardSize();
+            try {
+                Integer size = Integer.parseInt(strSize);
+                if (size < 3 || size > 10) {
+                    System.out.println("Invalid input. Please enter a number between 3 and 10.");
+                    continue;
+                }
+                return size;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
             }
-            return size;
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a number.");
-            return this.getBoardSize();
         }
+        
     }
 
     public Integer getSize() {
