@@ -3,6 +3,7 @@ package tictactoe.sebastian.game.TicTacToe;
 import tictactoe.sebastian.game.Board;
 import tictactoe.sebastian.game.Cell;
 import tictactoe.sebastian.game.CellValue;
+import tictactoe.sebastian.game.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +11,25 @@ import java.util.List;
 public class TicTacToeBoard implements Board {
 
     private final int MAX_FIELDS_IN_ROW = 3;
+    private Player firstPlayer;
+    private Player secondPlayer;
+
+    private Player currentPlayer;
 
     private final TicTacToeCell[][] cells = new TicTacToeCell[MAX_FIELDS_IN_ROW][MAX_FIELDS_IN_ROW];
 
     @Override
-    public void init() {
+    public void init(Player firstPlayer, Player secondPlayer) {
+        this.firstPlayer = firstPlayer;
+        this.currentPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+
         for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
             for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
                 cells[x][y] = new TicTacToeCell(x, y, CellValue.Empty);
             }
         }
+
     }
 
     @Override
@@ -28,6 +38,11 @@ public class TicTacToeBoard implements Board {
             throw new UnsupportedOperationException("cell has already a value");
 
         cells[xPosition][yPosition].setValue(value);
+    }
+
+    @Override
+    public Player getCurrentPLayer() {
+        return null;
     }
 
     @Override
