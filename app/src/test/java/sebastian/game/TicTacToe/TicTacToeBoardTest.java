@@ -14,6 +14,7 @@ public class TicTacToeBoardTest {
 
     @BeforeEach
     void initBoard(){
+        board = new TicTacToeBoard();
         board.init();
     }
 
