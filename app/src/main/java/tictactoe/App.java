@@ -1,32 +1,16 @@
 package tictactoe;
 
-import tictactoe.game.Game;
+import tictactoe.sebastian.game.TicTacToe.CellValue;
+import tictactoe.sebastian.game.TicTacToe.Game;
+import tictactoe.sebastian.game.TicTacToe.Players.HumanPlayer;
 
 public class App {
     
-    private Game game;
-
     public static void main(String[] args) {
-        App app = new App();
-        
-    }
-
-    public App() {
-        this.greet();
-        this.game = new Game();
-    }
-
-    String generateGreeting() {
-        return "Hello, welcome to Tic-Tac-Toe!";
-    }
-
-    private void greet() {
-        String greeting = generateGreeting();
-        System.out.println(greeting);
-    }
-
-    public Game getGame() {
-        System.out.println("getGame called");
-        return this.game;
+        Game game = new Game();
+        HumanPlayer p1 = new HumanPlayer(null, null);
+        HumanPlayer p2 = new HumanPlayer(null, null);
+        game.start(p1, p2);
+        game.print();
     }
 }

@@ -1,32 +1,32 @@
 package tictactoe.sebastian.game.TicTacToe;
 
-import tictactoe.sebastian.game.Board;
-import tictactoe.sebastian.game.Cell;
-import tictactoe.sebastian.game.CellValue;
-import tictactoe.sebastian.game.Player;
+import tictactoe.sebastian.game.Interfaces.BoardInterface;
+import tictactoe.sebastian.game.Interfaces.CellInterface;
+import tictactoe.sebastian.game.Interfaces.PlayerInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicTacToeBoard implements Board {
+public class Board implements BoardInterface {
 
     private final int MAX_FIELDS_IN_ROW = 3;
-    private Player firstPlayer;
-    private Player secondPlayer;
+    private PlayerInterface firstPlayer;
+    private PlayerInterface secondPlayer;
 
-    private Player currentPlayer;
+    private PlayerInterface currentPlayer;
 
-    private final TicTacToeCell[][] cells = new TicTacToeCell[MAX_FIELDS_IN_ROW][MAX_FIELDS_IN_ROW];
+    private final Cell[][] cells = new Cell[MAX_FIELDS_IN_ROW][MAX_FIELDS_IN_ROW];
 
     @Override
-    public void init(Player firstPlayer, Player secondPlayer) {
+    public void init(PlayerInterface firstPlayer, PlayerInterface secondPlayer) {
         this.firstPlayer = firstPlayer;
         this.currentPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
 
         for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
             for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
-                cells[x][y] = new TicTacToeCell(x, y, CellValue.Empty);
+                cells[x][y] = new Cell(x, y, CellValue.Empty);
+                System.out.println(cells[x][y]);
             }
         }
 
@@ -41,7 +41,7 @@ public class TicTacToeBoard implements Board {
     }
 
     @Override
-    public Player getCurrentPLayer() {
+    public PlayerInterface getCurrentPLayer() {
         return null;
     }
 
@@ -62,8 +62,8 @@ public class TicTacToeBoard implements Board {
     }
 
     @Override
-    public List<Cell> getFreeCells() {
-        List<Cell> freeCells = new ArrayList<>();
+    public List<CellInterface> getFreeCells() {
+        List<CellInterface> freeCells = new ArrayList<>();
 
         for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
             for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
@@ -74,5 +74,15 @@ public class TicTacToeBoard implements Board {
         }
 
         return freeCells;
+    }
+
+    @Override
+    public void print() {
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
+            for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
+                System.out.print(cells[x][y].getValue() + " ");
+            }
+            System.out.println();
+        }
     }
 }

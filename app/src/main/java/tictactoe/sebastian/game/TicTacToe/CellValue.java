@@ -1,4 +1,4 @@
-package tictactoe.sebastian.game;
+package tictactoe.sebastian.game.TicTacToe;
 
 public enum CellValue {
 

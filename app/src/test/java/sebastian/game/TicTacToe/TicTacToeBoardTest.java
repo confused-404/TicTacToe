@@ -6,16 +6,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import tictactoe.sebastian.game.TicTacToe.TicTacToeBoard;
+import tictactoe.sebastian.game.TicTacToe.Board;
+import tictactoe.sebastian.game.TicTacToe.Players.DummyPlayer;
 
 public class TicTacToeBoardTest {
 
-    private TicTacToeBoard board;
+    private Board board;
+    private DummyPlayer p1;
+    private DummyPlayer p2;
 
     @BeforeEach
     void initBoard(){
-        board = new TicTacToeBoard();
-        board.init();
+        board = new Board();
+        board.init(p1, p2);
     }
 
     @Test
