@@ -14,7 +14,7 @@ public interface BoardInterface {
 
     void setCellValue(int xPosition, int yPosition, CellValue value);
 
-    PlayerInterface getCurrentPLayer();
+    PlayerInterface getCurrentPlayer();
 
     void print();
 

@@ -40,7 +40,7 @@ public class Board implements BoardInterface {
     }
 
     @Override
-    public PlayerInterface getCurrentPLayer() {
+    public PlayerInterface getCurrentPlayer() {
         return null;
     }
 
