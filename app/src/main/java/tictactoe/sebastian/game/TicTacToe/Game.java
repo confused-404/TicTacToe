@@ -11,6 +11,8 @@ public class Game implements GameInterface {
     public void start(PlayerInterface p1, PlayerInterface p2) {
         board = new Board();
         board.init(p1, p2);
+        p1.setBoard(board);
+        p2.setBoard(board);
     }
 
     @Override

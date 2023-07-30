@@ -26,7 +26,6 @@ public class Board implements BoardInterface {
         for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
             for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
                 cells[x][y] = new Cell(x, y, CellValue.Empty);
-                System.out.println(cells[x][y]);
             }
         }
 

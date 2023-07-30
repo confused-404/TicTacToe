@@ -11,7 +11,9 @@ import tictactoe.sebastian.game.TicTacToe.Board;
 @AllArgsConstructor
 public class DummyPlayer implements PlayerInterface {
 
-    private final Board board;
+    @Getter
+    @Setter
+    private Board board;
 
     @Getter
     @NonNull

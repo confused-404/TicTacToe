@@ -5,6 +5,7 @@ import java.util.Scanner;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import tictactoe.sebastian.game.Interfaces.CellInterface;
 import tictactoe.sebastian.game.Interfaces.PlayerInterface;
 import tictactoe.sebastian.game.TicTacToe.Board;
@@ -13,7 +14,10 @@ import tictactoe.sebastian.game.TicTacToe.Board;
 public class HumanPlayer implements PlayerInterface {
 
     private final Scanner scanner = new Scanner(System.in);
-    private final Board board;
+
+    @Getter
+    @Setter
+    private Board board;
 
     @Getter
     @NonNull
