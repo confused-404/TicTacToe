@@ -7,6 +7,7 @@ import lombok.Setter;
 import tictactoe.sebastian.game.Interfaces.CellInterface;
 import tictactoe.sebastian.game.Interfaces.PlayerInterface;
 import tictactoe.sebastian.game.TicTacToe.Board;
+import tictactoe.sebastian.game.TicTacToe.CellValue;
 
 @AllArgsConstructor
 public class DummyPlayer implements PlayerInterface {
@@ -14,6 +15,10 @@ public class DummyPlayer implements PlayerInterface {
     @Getter
     @Setter
     private Board board;
+
+    @Getter
+    @Setter
+    private CellValue playerSymbol;
 
     @Getter
     @NonNull

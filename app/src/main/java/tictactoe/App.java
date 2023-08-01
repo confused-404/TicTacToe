@@ -10,6 +10,6 @@ public class App {
         HumanPlayer p1 = new HumanPlayer("Yves");
         HumanPlayer p2 = new HumanPlayer("Sebastian");
         game.start(p1, p2);
-        game.print();
+        game.gameLoop();
     }
 }

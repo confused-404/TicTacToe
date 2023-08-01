@@ -39,9 +39,13 @@ public class Board implements BoardInterface {
         cells[xPosition][yPosition].setValue(value);
     }
 
+    public Cell getCell(int xPosition, int yPosition) {
+        return cells[xPosition][yPosition];
+    }
+
     @Override
     public PlayerInterface getCurrentPlayer() {
-        return null;
+        return currentPlayer;
     }
 
     @Override
@@ -83,5 +87,49 @@ public class Board implements BoardInterface {
             }
             System.out.println();
         }
+    }
+
+    public void swapCurrentPlayer() {
+        if (currentPlayer == firstPlayer) {
+            currentPlayer = secondPlayer;
+        } else {
+            currentPlayer = firstPlayer;
+        }
+    }
+
+    public boolean isGameWon() {
+        return checkRows() || checkColumns() || checkDiagonals();
+    }
+
+    private boolean checkRows() {
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
+            if (cells[x][0].getValue() != CellValue.Empty && cells[x][0].getValue() == cells[x][1].getValue() && cells[x][0].getValue() == cells[x][2].getValue()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean checkColumns() {
+        for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
+            if (cells[0][y].getValue() != CellValue.Empty && cells[0][y].getValue() == cells[1][y].getValue() && cells[0][y].getValue() == cells[2][y].getValue()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean checkDiagonals() {
+        if (cells[0][0].getValue() != CellValue.Empty && cells[0][0].getValue() == cells[1][1].getValue() && cells[0][0].getValue() == cells[2][2].getValue()) {
+            return true;
+        }
+
+        if (cells[0][2].getValue() != CellValue.Empty && cells[0][2].getValue() == cells[1][1].getValue() && cells[0][2].getValue() == cells[2][0].getValue()) {
+            return true;
+        }
+
+        return false;
     }
 }
