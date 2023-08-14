@@ -31,17 +31,25 @@ public class Game implements GameInterface {
         gameStatus = GameStatus.IN_PROGRESS;
 
         while (gameStatus == GameStatus.IN_PROGRESS) {
-            if (!board.existsFreeCell() || board.isGameWon()) {
+            
+            board.print();
+
+            if (board.whoWins() == null) {
+                if (!board.existsFreeCell()) {
+                    gameStatus = GameStatus.OVER;
+                    System.out.println("Game over, draw...");
+                    break;
+                }
+            } else {
                 gameStatus = GameStatus.OVER;
+                System.out.println("Game over, " + board.whoWins() + " wins!");
                 break;
             }
-            board.print();
+            
             CellInterface move = board.getCurrentPlayer().getNextMove();
             board.setCellValue(move.getXPosition(), move.getYPosition(), board.getCurrentPlayer().getPlayerSymbol());
             board.swapCurrentPlayer();
         }
-
-        //TODO know who won the game
         
     }
 }

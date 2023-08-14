@@ -97,39 +97,54 @@ public class Board implements BoardInterface {
         }
     }
 
-    public boolean isGameWon() {
-        return checkRows() || checkColumns() || checkDiagonals();
-    }
+    public String whoWins() {
 
-    private boolean checkRows() {
+        // check rows
+
         for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
-            if (cells[x][0].getValue() != CellValue.Empty && cells[x][0].getValue() == cells[x][1].getValue() && cells[x][0].getValue() == cells[x][2].getValue()) {
-                return true;
+            if (cells[x][0].getValue() == CellValue.X && cells[x][0].getValue() == cells[x][1].getValue() && cells[x][0].getValue() == cells[x][2].getValue()) {
+                return "X";
             }
         }
 
-        return false;
-    }
+        for (int x = 0; x < MAX_FIELDS_IN_ROW; x++) {
+            if (cells[x][0].getValue() == CellValue.O && cells[x][0].getValue() == cells[x][1].getValue() && cells[x][0].getValue() == cells[x][2].getValue()) {
+                return "O";
+            }
+        }
 
-    private boolean checkColumns() {
+        // check columns
+
         for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
-            if (cells[0][y].getValue() != CellValue.Empty && cells[0][y].getValue() == cells[1][y].getValue() && cells[0][y].getValue() == cells[2][y].getValue()) {
-                return true;
+            if (cells[0][y].getValue() == CellValue.X && cells[0][y].getValue() == cells[1][y].getValue() && cells[0][y].getValue() == cells[2][y].getValue()) {
+                return "X";
+            }
+        }
+        
+        for (int y = 0; y < MAX_FIELDS_IN_ROW; y++) {
+            if (cells[0][y].getValue() == CellValue.O && cells[0][y].getValue() == cells[1][y].getValue() && cells[0][y].getValue() == cells[2][y].getValue()) {
+                return "O";
             }
         }
 
-        return false;
-    }
+        // check diagonals
 
-    private boolean checkDiagonals() {
-        if (cells[0][0].getValue() != CellValue.Empty && cells[0][0].getValue() == cells[1][1].getValue() && cells[0][0].getValue() == cells[2][2].getValue()) {
-            return true;
+        if (cells[0][0].getValue() == CellValue.X && cells[0][0].getValue() == cells[1][1].getValue() && cells[0][0].getValue() == cells[2][2].getValue()) {
+            return "X";
         }
 
-        if (cells[0][2].getValue() != CellValue.Empty && cells[0][2].getValue() == cells[1][1].getValue() && cells[0][2].getValue() == cells[2][0].getValue()) {
-            return true;
+        if (cells[0][2].getValue() == CellValue.X && cells[0][2].getValue() == cells[1][1].getValue() && cells[0][2].getValue() == cells[2][0].getValue()) {
+            return "X";
         }
 
-        return false;
+        if (cells[0][0].getValue() == CellValue.O && cells[0][0].getValue() == cells[1][1].getValue() && cells[0][0].getValue() == cells[2][2].getValue()) {
+            return "O";
+        }
+
+        if (cells[0][2].getValue() == CellValue.O && cells[0][2].getValue() == cells[1][1].getValue() && cells[0][2].getValue() == cells[2][0].getValue()) {
+            return "O";
+        }
+
+        return null;
     }
 }
